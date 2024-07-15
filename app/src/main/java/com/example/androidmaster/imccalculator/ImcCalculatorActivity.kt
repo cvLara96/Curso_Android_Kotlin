@@ -1,18 +1,27 @@
 package com.example.androidmaster.imccalculator
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.example.androidmaster.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.slider.RangeSlider
 import java.text.DecimalFormat
+import kotlin.math.pow
 
 class ImcCalculatorActivity : AppCompatActivity() {
 
     private var isMaleSelected: Boolean = true
     private var isFemaleSelected: Boolean = false
+    private var currentWeight: Int = 50 //Indicaremos un valor para el peso por defecto
+    private var currentAge: Int = 25 //Indicaremos un valor para la edad por defecto
+    private var currentHeight: Int = 120 //Indicaremos un valor para la altura por defecto
 
     //Con lateinit indicaremos que se iniciara despues
     //Como queremos utilizarlo en varios metodos, deberemos declararlo aqui
@@ -21,6 +30,20 @@ class ImcCalculatorActivity : AppCompatActivity() {
     private lateinit var cardViewFemale: CardView
     private lateinit var tvHeight: TextView
     private lateinit var rangeHeight: RangeSlider
+    private lateinit var btnSubtractWeight: FloatingActionButton
+    private lateinit var btnAddWeight: FloatingActionButton
+    private lateinit var tvWeight: TextView
+    private lateinit var btnSubtractAge: FloatingActionButton
+    private lateinit var btnAddAge: FloatingActionButton
+    private lateinit var tvAge: TextView
+    private lateinit var btnCalculate: Button
+
+    //Vamos a crear un companion object (en java seria el equivalente a un static) que hara que lo que este dentro, se podra utilizar
+    //por las demas actividades, en este caso, meteremos una constante que almacenara la clave del
+    //intent que contiene el resultado del calculo
+    companion object{
+        const val IMC_KEY = "RESULT_IMC"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +65,13 @@ class ImcCalculatorActivity : AppCompatActivity() {
         cardViewFemale = findViewById(R.id.cardViewFemale)
         tvHeight = findViewById(R.id.tvHeight)
         rangeHeight = findViewById(R.id.rangeHeight)
+        btnSubtractWeight = findViewById(R.id.btnSubtractWeight)
+        btnAddWeight = findViewById(R.id.btnAddWeight)
+        tvWeight = findViewById(R.id.tvWeight)
+        btnSubtractAge = findViewById(R.id.btnSubtractAge)
+        btnAddAge = findViewById(R.id.btnAddAge)
+        tvAge = findViewById(R.id.tvAge)
+        btnCalculate = findViewById(R.id.btnCalculate)
     }
 
     //Este metodo accedera a las View y les pondra un setOnClickListener
@@ -68,14 +98,120 @@ class ImcCalculatorActivity : AppCompatActivity() {
         rangeHeight.addOnChangeListener { slider, value, fromUser ->
 
             //En este caso tendremos que formatear el decimal para que el numero que devuelva sea entero
+            /**
+             * Según el patrón #.##, el número 120.0 se formatea como "120"
+             * (sin decimales porque .## indica que los decimales son opcionales
+             * y no se muestran ceros innecesarios).
+             */
             val decimalFormat = DecimalFormat("#.##")
-            val result = decimalFormat.format(value)
-            tvHeight.text = "$result cm"
+            currentHeight = decimalFormat.format(value).toInt()
+            tvHeight.text = "$currentHeight cm"
+
+        }
+
+        //Iniciaremos el listener para los botones de aumentar o disminuir el peso
+        btnSubtractWeight.setOnClickListener {
+            //Restara 1 al valor por defecto, si es el valor es 0 lanzara una tostada indicando que no puede bajar ams
+            if (currentWeight == 0) {
+                Toast.makeText(
+                    this,
+                    "El valor no puede ser inferior a $currentWeight",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                currentWeight -= 1
+                setWeight()
+            }
+
+        }
+
+        btnAddWeight.setOnClickListener {
+            //Sumara 1 al valor por defecto, si es el valor es 500 lanzara una tostada
+            if (currentWeight == 500) {
+                Toast.makeText(
+                    this,
+                    "El valor no puede ser superior a $currentWeight",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                currentWeight += 1
+                setWeight()
+
+            }
+
+        }
+
+        //Iniciaremos los listener para los botones de aumentar o disminuir la edad
+        btnAddAge.setOnClickListener {
+            //Sumara 1 al valor por defecto, si es el valor es 100 lanzara una tostada
+            if (currentAge == 100) {
+                Toast.makeText(
+                    this,
+                    "El valor no puede ser superior a $currentAge",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                currentAge += 1
+                setAge()
+
+            }
+
+        }
+
+        btnSubtractAge.setOnClickListener {
+            //Restara 1 al valor por defecto, si es el valor es 0 lanzara una tostada indicando que no puede bajar ams
+            if (currentAge == 0) {
+                Toast.makeText(
+                    this,
+                    "El valor no puede ser inferior a $currentAge",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                currentAge -= 1
+                setAge()
+            }
+        }
+
+        //Indicaremos el listener para el boton de calcular
+        btnCalculate.setOnClickListener {
+            val result = calculateIMC()
+            //Crearemos un metodo que enviara el resultado a la actividad result a traves de un intent
+            navigateToResult(result)
 
         }
     }
 
-    //Esta funcion se encargara
+    //Metodo que enviara el dato de IMC a la activity result
+    private fun navigateToResult(result: Double) {
+
+        intent = Intent(this, ResultIMCActivity::class.java)
+        intent.putExtra(IMC_KEY, result)
+        startActivity(intent)
+
+    }
+
+    //Crearemos la funcion que calculara el IMC y lo devolvera
+    private fun calculateIMC(): Double {
+        //Crearemos un formato para sacar el imc con dos decimales
+        val decimalFormat = DecimalFormat("#.##")
+        //La altura la dividimos entre 100 porque currentHeight esta en centimetros
+        //Para utilizar potencias importamos import kotlin.math.pow, y utilizamos el metodo .pow(n) n sera el numero al que elevamos la base
+        val imc = currentWeight / ((currentHeight.toDouble() / 100).pow(2))
+        return decimalFormat.format(imc).toDouble()
+
+    }
+
+    //Crearemos una funcion que lo que hara sera establecer el nuevo peso al textView que muestra el peso
+    private fun setWeight() {
+        tvWeight.text = currentWeight.toString()
+    }
+
+    //Crearemos una funcion que lo que hara sera establecer la edad al textview que muestra la edad
+    private fun setAge() {
+        tvAge.text = currentAge.toString()
+    }
+
+    //Esta funcion se encargara de cambiar el valor del boolean de los generos
     private fun changeGender() {
         //Lo que hara sera cambiar el valor de las variables a lo contrario
         //De manera que si una esta en false, pasara a true y si esta en true pasara a false
@@ -116,9 +252,12 @@ class ImcCalculatorActivity : AppCompatActivity() {
     //Este metodo iniciara la interfaz de usuario con una interfaz por defecto
     private fun initIU() {
 
-        //Para ello llamamos a setGenderColor,
+        //setGenderColor establecera por defecto un color a cada genero
         setGenderColor()
-
+        //setWeight establecera por defecto el valor que le hemos dado a currentWeight
+        setWeight()
+        //setAge establecera por defecto el valor que le hemos dado a currentAge
+        setAge()
 
     }
 

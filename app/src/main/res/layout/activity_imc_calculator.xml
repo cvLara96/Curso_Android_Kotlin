@@ -175,7 +175,7 @@
                 android:textColor="@color/white"
                 android:textSize="38sp"
                 android:textStyle="bold"
-                android:text="60" />
+                tools:text="50" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -188,10 +188,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    app:backgroundTint="@color/background_floatingActionButton"
                     android:foreground="@drawable/ic_subtract"
-                    app:tint="@color/white"
-                    />
+                    app:backgroundTint="@color/background_floatingActionButton"
+                    app:tint="@color/white" />
                 <!--Para que la imagen aparezca centrada hemos utilizado android:foreground en lugar de android:src
                 otra forma que hemos visto es utilizando android:src y ademas utilizando pp:fabCustomSize="50dp"-->
 
@@ -199,10 +198,9 @@
                     android:id="@+id/btnAddWeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:backgroundTint="@color/background_floatingActionButton"
                     android:foreground="@drawable/ic_add"
-                    app:tint="@color/white"
-                    />
+                    app:backgroundTint="@color/background_floatingActionButton"
+                    app:tint="@color/white" />
 
 
             </LinearLayout>
@@ -246,11 +244,48 @@
                 android:textStyle="bold"
                 tools:text="25" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btnSubtractAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:foreground="@drawable/ic_subtract"
+                    app:backgroundTint="@color/background_floatingActionButton" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btnAddAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foreground="@drawable/ic_add"
+                    app:backgroundTint="@color/background_floatingActionButton" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/calculate"
+        android:textAllCaps="true"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewPeso" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
