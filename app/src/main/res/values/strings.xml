@@ -6,4 +6,22 @@
     <string name="weight">Peso</string>
     <string name="age">Edad</string>
     <string name="calculate">Calcular</string>
+    <string name="result">Resultado del cálculo</string>
+    <string name="re_calculate">Re-Calcular</string>
+
+    <string name="error">Error</string>
+    <!-- Strings para los resultados-->
+    <string name="infrapeso">Infrapeso</string>
+    <string name="infoInfrapeso">Se encuentra dentro del rango de peso insuficiente</string>
+
+    <string name="normal">Normal</string>
+    <string name="infoNormal">Se encuentra dentro del rango de peso normal o saludable</string>
+
+    <string name="sobrepeso">Sobrepeso</string>
+    <string name="infoSobrepeso">Se encuentra dentro del rango de sobrepeso</string>
+
+    <string name="obesidad">Obesidad</string>
+    <string name="infoObesidad">Se encuentra dentro del rango de obesidad</string>
+
+
 </resources>
