@@ -1,4 +1,5 @@
 <resources>
+    <!--String IMC APP -->
     <string name="app_name">AndroidMaster</string>
     <string name="male">Hombre</string>
     <string name="female">Mujer</string>
@@ -22,6 +23,10 @@
 
     <string name="obesidad">Obesidad</string>
     <string name="infoObesidad">Se encuentra dentro del rango de obesidad</string>
+
+    <!--String TO-DO APP -->
+    <string name="To_Do_title">To-Do App</string>
+    <string name="To_Do_category">Categorias</string>
 
 
 </resources>
