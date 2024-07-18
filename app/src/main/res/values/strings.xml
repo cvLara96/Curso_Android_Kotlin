@@ -27,6 +27,9 @@
     <!--String TO-DO APP -->
     <string name="To_Do_title">To-Do App</string>
     <string name="To_Do_category">Categorias</string>
+    <string name="business">Negocios</string>
+    <string name="personal">Personal</string>
+    <string name="other">Other</string>
 
 
 </resources>

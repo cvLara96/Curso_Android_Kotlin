@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><!--5.2.2.- Crearemos un cardview que sera la vista que se mostrara -->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="160dp"
+    android:layout_height="90dp"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="16dp"
+    app:cardBackgroundColor="@color/todo_background_card"
+    app:cardCornerRadius="16dp">
+    <!--Dentro del cardView vamos a crear un linearLayout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+        <!-- android:gravity="center_vertical" centrara verticalmente lo que haya dentro del linearLayout -->
+
+        <TextView
+            android:id="@+id/tvCategoryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            tools:text="PRUEBA" />
+
+        <!--Crearemos una view que sera una linea -->
+        <View
+            android:id="@+id/divider"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            tools:background="@color/white" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

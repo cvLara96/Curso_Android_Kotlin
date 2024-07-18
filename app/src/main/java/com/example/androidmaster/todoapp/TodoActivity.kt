@@ -2,6 +2,7 @@ package com.example.androidmaster.todoapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidmaster.R
 
@@ -15,6 +16,15 @@ class TodoActivity : AppCompatActivity() {
      *  - El adaptador sera la clase que conectara toda la informacion con el recyclerView
      *  - El ViewHolder sera el encargado de pintarlo
      */
+
+    //Creamos el adaptador
+    private lateinit var categoriesAdapter: CategoriesAdapter
+    //Creamos el listado de categorias que enviaremos al adaptador
+    private val categories = listOf<TaskCategory>(
+        TaskCategory.Business,
+        TaskCategory.Other,
+        TaskCategory.Personal
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +44,13 @@ class TodoActivity : AppCompatActivity() {
     }
 
     private fun initIU() {
+
+        //Inicializamos el adaptador de categorias pasandole el listado de categorias
+        categoriesAdapter = CategoriesAdapter(categories)
+        //Asignamos un layoutManager al recyclerView que hara que la vista sea horizontal o vertical
+        rvCategories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        //Asignamos el adaptador al recyclerView
+        rvCategories.adapter = categoriesAdapter
 
     }
 }
