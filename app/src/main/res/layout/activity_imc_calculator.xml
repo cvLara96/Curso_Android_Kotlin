@@ -188,18 +188,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:foreground="@drawable/ic_subtract"
+                    android:src="@drawable/ic_subtract"
                     app:backgroundTint="@color/background_floatingActionButton"
+                    app:fabSize="mini"
+                    app:maxImageSize="35dp"
                     app:tint="@color/white" />
-                <!--Para que la imagen aparezca centrada hemos utilizado android:foreground en lugar de android:src
-                otra forma que hemos visto es utilizando android:src y ademas utilizando pp:fabCustomSize="50dp"-->
+                <!--Para que la imagen aparezca centrada podemos utilizar android:foreground en lugar de android:src
+                Para el color del boton usamos app:tint="@color/white"-->
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btnAddWeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:foreground="@drawable/ic_add"
+                    android:src="@drawable/ic_add"
                     app:backgroundTint="@color/background_floatingActionButton"
+                    app:fabSize="mini"
+                    app:maxImageSize="35dp"
                     app:tint="@color/white" />
 
 
@@ -255,15 +259,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:foreground="@drawable/ic_subtract"
-                    app:backgroundTint="@color/background_floatingActionButton" />
+                    android:src="@drawable/ic_subtract"
+                    app:backgroundTint="@color/background_floatingActionButton"
+                    app:fabSize="mini"
+                    app:maxImageSize="35dp"
+                    app:tint="@color/white" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btnAddAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:foreground="@drawable/ic_add"
-                    app:backgroundTint="@color/background_floatingActionButton" />
+                    android:src="@drawable/ic_add"
+                    app:backgroundTint="@color/background_floatingActionButton"
+                    app:fabSize="mini"
+                    app:maxImageSize="35dp"
+                    app:tint="@color/white" />
 
             </LinearLayout>
 
