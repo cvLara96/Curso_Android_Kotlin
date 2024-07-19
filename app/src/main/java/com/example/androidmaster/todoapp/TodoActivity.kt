@@ -10,6 +10,7 @@ class TodoActivity : AppCompatActivity() {
 
     //Creamos referencia a los componentes
     private lateinit var rvCategories : RecyclerView
+    private lateinit var rvTasks : RecyclerView
 
     /**
      * Para que el recyclerview funcione deberemos crear un adaptador y un viewHolder
@@ -41,6 +42,7 @@ class TodoActivity : AppCompatActivity() {
     //Metodo que referencia los componentes
     private fun initComponents() {
         rvCategories = findViewById(R.id.rvCategories)
+        rvTasks = findViewById(R.id.rvTasks)
     }
 
     private fun initIU() {

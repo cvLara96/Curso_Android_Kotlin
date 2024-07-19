@@ -30,6 +30,7 @@
     <string name="business">Negocios</string>
     <string name="personal">Personal</string>
     <string name="other">Other</string>
+    <string name="To_Do_tasks">Tareas</string>
 
 
 </resources>
