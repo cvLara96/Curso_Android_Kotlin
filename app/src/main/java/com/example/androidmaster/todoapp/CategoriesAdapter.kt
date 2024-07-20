@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidmaster.R
 
-//1.- Esta clase debera recibir un parametro que sera una lista de objetos TaskCategory
+//1.- Esta clase debera recibir un parametro que sera una lista de objetos TaskCategory (y tambien una funcion lambda que se ha creado despues)
 //4.- Indicaremos que hereda de la clase RecyclerView.Adapter y recibira como parametro el nombre de la clase ViewHolder
-class CategoriesAdapter(private val categories: List<TaskCategory>) :
+class CategoriesAdapter(private val categories: List<TaskCategory>, private val onItemSelected : (Int) -> Unit) :
     RecyclerView.Adapter<CategoriesViewHolder>() {
 
     //2.- Creamos la clase CategoriesViewHolder -->
@@ -32,7 +32,9 @@ class CategoriesAdapter(private val categories: List<TaskCategory>) :
 
         //5.3.2.- Con la funcion render creada, la llamamos desde este metodo a traves del holder
         //Como necesita recibir un objeto taskCategory del listado, a traves de la posicion le enviaremos el que proceda
-        holder.render(categories[position])
+
+        //(En este caso se envia a la funcion render del ViewHolder la funcion lambda, para enviarla debe ir sin parentesis)
+        holder.render(categories[position], onItemSelected)
 
     }
 

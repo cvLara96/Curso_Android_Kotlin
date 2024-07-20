@@ -3,6 +3,7 @@ package com.example.androidmaster.todoapp
 import android.provider.Settings.Global.getString
 import android.view.View
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidmaster.R
@@ -15,10 +16,25 @@ class CategoriesViewHolder (view : View) : RecyclerView.ViewHolder(view){
     //Para referenciarlo hacemos uso del view que contiene toda la informacion de la vista
     private val tvCategoryName : TextView = view.findViewById(R.id.tvCategoryName)
     private val divider : View = view.findViewById(R.id.divider)
+    private val cvTaskCategory : CardView = view.findViewById(R.id.cvTaskCategory)
 
 
     //5.3.1. La funcion se llamara render y recibira un objeto de la clase TaskCategory
-    fun render (taskCategory : TaskCategory){
+    //(Indicaremos que tambien recibe como parametro una funcion lambda
+    fun render (taskCategory : TaskCategory, onItemSelected : (Int) -> Unit){
+
+        //(Filtramos para comprobar si esta seleccionado o no y lo asignamos a una variable)
+        val color = if(taskCategory.isSelected){
+            R.color.todo_background_card
+        }else{
+            R.color.todo_background_disabled
+        }
+
+        //ASignamos el color al cardView dependiendo de si esta seleccionado o no
+        cvTaskCategory.setCardBackgroundColor(ContextCompat.getColor(cvTaskCategory.context, color))
+
+        //(Aqui lo que haremos sera asignar el listener a la vista, es decir, al itemView)
+        itemView.setOnClickListener { onItemSelected(layoutPosition) } //Para saber cual es la posicion del elemento seleccionado podemos usar layoutPosition
 
         //5.4.1.- Asignaremos los valores del objeto que recibe como parametro a los elementos de la vista
         //Para ello nos ayudaremos con un when() que filtrara dependiendo del taskCategory que se este recibiendo
