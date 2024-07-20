@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -13,10 +14,12 @@
         android:theme="@style/Theme.AndroidMaster"
         tools:targetApi="34">
         <activity
+            android:name=".superheroapp.SuperHeroListActivity"
+            android:exported="false" />
+        <activity
             android:name=".todoapp.TodoActivity"
             android:exported="false"
-            android:theme="@style/Theme.ToDoApp"/>
-        <!-- Con android:theme en una actividad en concreto indicamos que tema usara esa actividad en concreto-->
+            android:theme="@style/Theme.ToDoApp" /> <!-- Con android:theme en una actividad en concreto indicamos que tema usara esa actividad en concreto -->
         <activity
             android:name=".imccalculator.ResultIMCActivity"
             android:exported="false" />
