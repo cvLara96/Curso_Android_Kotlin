@@ -3,9 +3,12 @@ package com.example.androidmaster.superheroapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
+import android.view.View
 import androidx.core.view.isVisible
 import com.example.androidmaster.R
 import com.example.androidmaster.databinding.ActivityDetailSuperHeroBinding
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,6 +16,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import kotlin.math.roundToInt
 
 //Esta activity se mostrara cuando pinchemos en algun superHero y nos dara mas informacion sobre el/ella
 class DetailSuperHeroActivity : AppCompatActivity() {
@@ -55,12 +59,12 @@ class DetailSuperHeroActivity : AppCompatActivity() {
 
                 //Accedemos al contenido de la response (especificado en la dataClass)
                 //Queremos acceder a los results
-                val response : SuperHeroDetailResponse? = superHeroDetail.body()
+                val superHero : SuperHeroDetailResponse? = superHeroDetail.body()
 
-                if(response != null){
+                if(superHero != null){
                     //Ahora sobre el hilo principal:
                     runOnUiThread{
-                        createUI(response)
+                        createUI(superHero)
                     }
                 }
 
@@ -73,11 +77,48 @@ class DetailSuperHeroActivity : AppCompatActivity() {
     }
 
     //Este metodo creara la IU con la info del super Heroe
-    private fun createUI(response: SuperHeroDetailResponse) {
+    private fun createUI(superHero: SuperHeroDetailResponse) {
 
+        Picasso.get().load(superHero.image.url).into(binding.ivSuperHeroPhoto)
+        binding.tvSHName.text = superHero.name
+        prepareStats(superHero.superHeroStats)
 
+    }
 
+    private fun prepareStats(superHeroStats: SuperHeroStats) {
 
+        //la idea es darle a los view la altura en dp igual al valor del stat del super heroe
+        //Para ello debemos acceder a sus parametros
+        updateHeight(binding.viewItelligence, superHeroStats.intelligence)
+        updateHeight(binding.viewStrength, superHeroStats.strength)
+        updateHeight(binding.viewSpeed, superHeroStats.speed)
+        updateHeight(binding.viewDurability, superHeroStats.durability)
+        updateHeight(binding.viewCombat, superHeroStats.combat)
+        updateHeight(binding.viewPower, superHeroStats.power)
+
+    }
+
+    //Creamos un metodo que actualiza la altura del componente
+    private fun updateHeight(view: View, superHeroStat:String){
+
+        //De esta forma nos evitamos repetir 6 veces este fragmento de codigo en el metodo prepareStats()
+        /*
+        val params = binding.viewItelligence.layoutParams
+        params.height = superHeroStats.intelligence.toInt()
+        binding.viewItelligence.layoutParams = params
+         */
+
+        val params = view.layoutParams
+        params.height = pxToDp(superHeroStat.toFloat())
+        view.layoutParams = params
+
+    }
+
+    //Creamos un metodo que transforme a dp lo que le pasemos
+    private fun pxToDp(px:Float):Int{
+
+        //Para transformar float a dp
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, px, resources.displayMetrics).roundToInt()
     }
 
     //Necesitaremos el retrofit

@@ -34,5 +34,13 @@
     <string name="To_Do_add_task_dialog">Añade tu tarea</string>
     <string name="To_Do_add_task_dialog_button">Crear tarea</string>
 
+    <!--Strings super hero app -->
+    <string name="stat_intelligence">Intelligence</string>
+    <string name="stat_strength">Strength</string>
+    <string name="stat_speed">Speed</string>
+    <string name="stat_durability">Durability</string>
+    <string name="stat_power">Power</string>
+    <string name="stat_combat">Combat</string>
+
 
 </resources>

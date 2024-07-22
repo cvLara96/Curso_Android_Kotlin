@@ -37,4 +37,18 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <!--Style textos de super hero app -->
+    <style name="stats_superHero">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">110dp</item>
+        <item name="android:layout_marginHorizontal">4dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:rotation">90</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
