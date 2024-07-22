@@ -26,5 +26,17 @@ data class SuperHeroDataResponse(
 * */
 data class SuperHeroItemResponse(
     @SerializedName("id") val superHeroID : String,
-    @SerializedName("name") val superHeroName : String
+    @SerializedName("name") val superHeroName : String,
+    @SerializedName("image") val superHeroImage : SuperHeroImageResponse
+
+)
+
+//Para acceder a la imagen, deberemos creear otra dataClass ya que esta dentro de image{}
+/*
+"image": {
+  "url": "https://www.superherodb.com/pictures2/portraits/10/100/1111.jpg"
+},
+ */
+data class SuperHeroImageResponse(
+    @SerializedName("url") val url : String
 )

@@ -133,6 +133,7 @@
                 android:stepSize="1"
                 android:valueFrom="120"
                 android:valueTo="200" />
+
             <!--Con stepSize indicamos el salto que da el range slider cuando lo movemos, en este caso de 1 en 1.
              con valueFrom indicamos el numero desde el que debe contar y con valueTo el limite-->
 

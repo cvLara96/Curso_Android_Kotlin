@@ -1,13 +1,16 @@
 package com.example.androidmaster.superheroapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidmaster.R
 import com.example.androidmaster.databinding.ActivitySuperHeroListBinding
+import com.example.androidmaster.superheroapp.DetailSuperHeroActivity.Companion.ID_KEY
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,9 +27,9 @@ class SuperHeroListActivity : AppCompatActivity() {
     //2(retrofit y corrutinas) Creamos el objeto Retrofit
     private lateinit var retrofit: Retrofit
 
-    //Creamos los componentes
-    private lateinit var searchView: SearchView
-    private lateinit var rvSuperHero: RecyclerView
+    //Creamos el adapter
+    private lateinit var superHeroAdapter : SuperHeroAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +65,12 @@ class SuperHeroListActivity : AppCompatActivity() {
 
         })
 
+        //Creamos el adapter
+        superHeroAdapter = SuperHeroAdapter(){id_superHero -> navigateToDetail(id_superHero)}//No necesita el parametro List porque ya esta inicializado en una lista vacia
+        binding.rvSuperHero.setHasFixedSize(true)
+        binding.rvSuperHero.layoutManager = LinearLayoutManager(this)
+        binding.rvSuperHero.adapter = superHeroAdapter
+
     }
 
     private fun searchByName(query: String) {
@@ -89,6 +98,10 @@ class SuperHeroListActivity : AppCompatActivity() {
                     //debemos indicarle que lo haga fuera de esta, utilizando runOnUiThread{}
                     //Esto ejecutara en el hilo principal lo que vaya entre sus llaves {}
                     runOnUiThread{
+
+                        //Aqui llamaremos al metodo encargado de actualizar el listado DENTRO DEL HILO PRINCIPAL
+                        superHeroAdapter.updateList(response.results)
+
                         binding.progressBar.isVisible = false
                     }
 
@@ -110,6 +123,16 @@ class SuperHeroListActivity : AppCompatActivity() {
             .baseUrl("https://superheroapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
+    }
+
+    //Metodo para ir hacia la actividad Detail
+    //Este metodo debemos enviarlo como una funcion lambda al adapter
+    private fun navigateToDetail(id:String){
+
+        val intent = Intent(this, DetailSuperHeroActivity::class.java)
+        intent.putExtra(ID_KEY, id)
+        startActivity(intent)
 
     }
 

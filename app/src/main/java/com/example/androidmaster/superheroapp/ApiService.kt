@@ -16,4 +16,10 @@ interface ApiService {
 
     //Crearemos una dataClass para el Response
 
+    //---------
+    //Creamos el metodo que busca por id
+    //Deberemos crear una nueva dataClass con la info del superHeroe
+    @GET("/api/1a12417a5d1b356feb2abe08bcd3f7ba/{id}")
+    suspend fun getSupeheroDetail(@Path("id")superHeroId : String) : Response<SuperHeroDetailResponse>
+
 }

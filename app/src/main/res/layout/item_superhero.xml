@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="22dp"
+    app:cardElevation="8dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp">
+    <!--se pone 8dp en el margen vertical porque las tarjetas
+     tendran 8dp arriba y 8dp abajo, es decir entre tarjeta y
+     tarjeta habra 8dp de una tarjeta y 8dp de la de abajo, un
+     total de 16dp-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivSuperHero"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
+        <!--ScaleType para escalar la imagen-->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:background="@color/superhero_item_name">
+
+            <TextView
+                android:id="@+id/tvSuperHeroName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="PRUEBA DE TEXTO"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>>
+
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

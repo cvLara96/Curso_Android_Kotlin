@@ -55,4 +55,9 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
+    //Picasso
+    //Para sacar la ultima version podemos ir al gitHub de Picasso https://github.com/square/picasso y en Tags podemos ver la ultima version
+    implementation("com.squareup.picasso:picasso:2.8")
+
+
 }
