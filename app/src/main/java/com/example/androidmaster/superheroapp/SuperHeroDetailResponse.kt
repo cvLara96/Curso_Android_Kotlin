@@ -6,7 +6,8 @@ data class SuperHeroDetailResponse(
 
     @SerializedName("name") val name: String,
     @SerializedName("powerstats") val superHeroStats : SuperHeroStats,
-    @SerializedName("image") val image : SuperHeroDetailImageResponse
+    @SerializedName("image") val image : SuperHeroDetailImageResponse,
+    @SerializedName("biography") val biography: Biography
 )
 
 data class SuperHeroStats(
@@ -32,5 +33,11 @@ data class SuperHeroStats(
 //Para extraer la imagen:
 data class SuperHeroDetailImageResponse(
     @SerializedName("url") val url : String
+)
+
+//Para la informacion de la biografia
+data class Biography(
+    @SerializedName("full-name") val full_name : String,
+    @SerializedName("publisher") val publisher : String
 )
 

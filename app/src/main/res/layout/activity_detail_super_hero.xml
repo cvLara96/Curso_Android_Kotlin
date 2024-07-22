@@ -31,15 +31,34 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
             <TextView
                 android:id="@+id/tvSHName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:textColor="@color/black"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                tools:text="TEXTO DE PRUEBA" />
+                tools:text="SUPER_HERO_NAME" />
+
+            <TextView
+                android:id="@+id/tvRealName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                tools:text="REAL_NAME" />
+
+            <TextView
+                android:id="@+id/tvPublisher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="11sp"
+                tools:text="PUBLISHER" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -119,29 +138,29 @@
                 <!-- Como todos los textos tienen mucho en comun salvo el texto, creamos un estilo comun-->
 
                 <TextView
-                    android:text="@string/stat_intelligence"
-                    style="@style/stats_superHero"/>
+                    style="@style/stats_superHero"
+                    android:text="@string/stat_intelligence" />
 
                 <TextView
 
-                    android:text="@string/stat_strength"
-                    style="@style/stats_superHero" />
+                    style="@style/stats_superHero"
+                    android:text="@string/stat_strength" />
 
                 <TextView
-                    android:text="@string/stat_speed"
-                    style="@style/stats_superHero" />
+                    style="@style/stats_superHero"
+                    android:text="@string/stat_speed" />
 
                 <TextView
-                    android:text="@string/stat_durability"
-                    style="@style/stats_superHero" />
+                    style="@style/stats_superHero"
+                    android:text="@string/stat_durability" />
 
                 <TextView
-                    android:text="@string/stat_power"
-                    style="@style/stats_superHero" />
+                    style="@style/stats_superHero"
+                    android:text="@string/stat_power" />
 
                 <TextView
-                    android:text="@string/stat_combat"
-                    style="@style/stats_superHero" />
+                    style="@style/stats_superHero"
+                    android:text="@string/stat_combat" />
 
             </LinearLayout>
 

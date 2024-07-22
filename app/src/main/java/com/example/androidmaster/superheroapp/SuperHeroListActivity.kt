@@ -99,9 +99,9 @@ class SuperHeroListActivity : AppCompatActivity() {
                     //Esto ejecutara en el hilo principal lo que vaya entre sus llaves {}
                     runOnUiThread{
 
-                        //Aqui llamaremos al metodo encargado de actualizar el listado DENTRO DEL HILO PRINCIPAL
-                        superHeroAdapter.updateList(response.results)
 
+                        //Aqui llamaremos al metodo encargado de actualizar el listado DENTRO DEL HILO PRINCIPAL
+                        superHeroAdapter.updateList(response.results ?: emptyList()) //Indicamos que si response.result es nulo, envie una lista vacia
                         binding.progressBar.isVisible = false
                     }
 
