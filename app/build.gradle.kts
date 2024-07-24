@@ -34,7 +34,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    viewBinding{
+    viewBinding {
         enable = true
     }
 }
@@ -58,6 +58,9 @@ dependencies {
     //Picasso
     //Para sacar la ultima version podemos ir al gitHub de Picasso https://github.com/square/picasso y en Tags podemos ver la ultima version
     implementation("com.squareup.picasso:picasso:2.8")
+
+    //DataStore
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
 
 
 }

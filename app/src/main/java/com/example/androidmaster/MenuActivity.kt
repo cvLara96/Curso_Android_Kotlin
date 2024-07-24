@@ -7,8 +7,10 @@ import android.widget.Button
 import com.example.androidmaster.R
 import com.example.androidmaster.firstapp.FirstAppActivity
 import com.example.androidmaster.imccalculator.ImcCalculatorActivity
+import com.example.androidmaster.settings.SettingsActivity
 import com.example.androidmaster.superheroapp.SuperHeroListActivity
 import com.example.androidmaster.todoapp.TodoActivity
+import okhttp3.internal.http2.Settings
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +21,13 @@ class MenuActivity : AppCompatActivity() {
         val btnIMCApp = findViewById<Button>(R.id.btnIMCApp)
         val btnToDo = findViewById<Button>(R.id.btnToDo)
         val btnSuperHero = findViewById<Button>(R.id.btnSuperHeroApp)
+        val btnSettings = findViewById<Button>(R.id.btnSettings)
 
         btnSaludApp.setOnClickListener { navigateToSaludApp() }
         btnIMCApp.setOnClickListener { navigateToIMCApp() }
         btnToDo.setOnClickListener { navigatetoToDoApp() }
-        btnSuperHero.setOnClickListener { navigatetoSuperHeroApp() }
+        btnSuperHero.setOnClickListener { navigateToSuperHeroApp() }
+        btnSettings.setOnClickListener { navigateToSettings() }
 
     }
 
@@ -46,8 +50,14 @@ class MenuActivity : AppCompatActivity() {
     }
 
     //Metodo para ir a la actividad SuperHero App
-    private fun navigatetoSuperHeroApp() {
+    private fun navigateToSuperHeroApp() {
         val intent = Intent(this, SuperHeroListActivity::class.java)
+        startActivity(intent)
+    }
+
+    //Metodo para ir a la actividad de settings
+    private fun navigateToSettings() {
+        val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
 

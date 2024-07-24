@@ -16,11 +16,11 @@
     <color name="title_text">#FF8D8E98</color>
     <color name="background_floatingActionButton">#FF6200EE</color>
 
-        <!--Colores dependiendo del resultado -->
-        <color name="infrapeso">#FFE57F</color>
-        <color name="normal">#CCFF90</color>
-        <color name="sobrepeso">#EC6E34</color>
-        <color name="obesidad">#DD4545</color>
+    <!--Colores dependiendo del resultado -->
+    <color name="infrapeso">#FFE57F</color>
+    <color name="normal">#CCFF90</color>
+    <color name="sobrepeso">#EC6E34</color>
+    <color name="obesidad">#DD4545</color>
 
     <!--Colores para la app To-Do App -->
     <color name="todo_background_card">#FF081A4A</color>
@@ -44,7 +44,5 @@
     <color name="stats">#8C565759</color>
 
     <!--Settings -->
-    <color name="settings_text_title">#000000</color>
-
-
+    <color name="settings_text_title">#FFFFFF</color>
 </resources>

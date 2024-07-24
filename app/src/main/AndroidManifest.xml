@@ -15,6 +15,12 @@
         android:theme="@style/Theme.AndroidMaster"
         tools:targetApi="34">
         <activity
+            android:name=".settings.PruebaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".superheroapp.DetailSuperHeroActivity"
             android:exported="false" />
         <activity

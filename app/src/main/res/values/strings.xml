@@ -42,5 +42,13 @@
     <string name="stat_power">Power</string>
     <string name="stat_combat">Combat</string>
 
+    <!--Strings settings app -->
+    <string name="dark_mode_title">Modo oscuro</string>
+    <string name="dark_mode_description">Activa el modo oscuro para un cambio visual</string>
+    <string name="bluetootho_title">Bluetooth</string>
+    <string name="bluetootho_description">Conecta periféricos sin cables</string>
+    <string name="volumen_title">Volumen</string>
+    <string name="vibration_title">Vibrar en las llamadas</string>
+
 
 </resources>
